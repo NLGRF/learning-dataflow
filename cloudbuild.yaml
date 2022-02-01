@@ -19,7 +19,7 @@ steps:
     - "PROJECT=${_PROJECT_ID}"
     - "BUCKET=${_BUCKET}"
     - "REGION=${_REGION}"
-  entrypoint: '/bin/sh'
+  entrypoint: 'bash'
   args:
     - '-c'
     - |

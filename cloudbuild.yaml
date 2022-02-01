@@ -24,5 +24,6 @@ steps:
     - '-c'
     - |
       pip install -r requirements.txt
+      chmod +x build.sh
       ./build.sh
   waitFor: ['Terraform init']

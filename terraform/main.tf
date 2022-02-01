@@ -5,7 +5,7 @@ provider "google" {
 
 data "google_project" "project" {}
 resource "google_cloud_scheduler_job" "scheduler" {
-  name = "scheduler-demo"
+  name = "scheduler-demo-test"
   schedule = "0 18 * * *"
   region = var.region
 

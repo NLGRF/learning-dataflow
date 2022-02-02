@@ -12,20 +12,17 @@ steps:
         -var=bucket=${_BUCKET} -auto-approve
   waitFor: ['-']
 
-- id: "Install dependencies"
-  name: python
-  entrypoint: pip
-  args: ["install", "-r", "requirements.txt", "--user"]
-  waitFor: ['Terraform init']
-
 - id: "Build dataflow template"
-  name: python
+  name: python:3.8
   dir: 'dataflow'
   env:
     - "PROJECT=${_PROJECT_ID}"
     - "BUCKET=${_BUCKET}"
     - "REGION=${_REGION}"
-  entrypoint: python
-  args: ["pipeline.py", "--input", "gs://${BUCKET}/data.csv", "--output", "gs://${BUCKET}/output", "--runner", "DataflowRunner", "--project","${PROJECT}", "--staging_location", "gs://${BUCKET}/staging", "--temp_location:", "gs://${BUCKET}/temp", "--region", "${REGION}", "--save_main_session"] 
-  waitFor: ['Install dependencies']
-
+  entrypoint: /bin/sh
+  args:
+    - '-c'
+    - |
+      pip install -r requirements.txt
+      ./build.sh
+  waitFor: ['Terraform init']

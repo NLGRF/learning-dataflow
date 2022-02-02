@@ -22,5 +22,5 @@ steps:
   entrypoint: /bin/sh
   args:
     - '-c'
-    - 'pip install -r requirements.txt && python pipeline.py --input gs://${BUCKET}/data.csv --output gs://${BUCKET}/output --runner DataflowRunner --project ${PROJECT} --staging_location gs://${BUCKET}/staging --temp_location gs://${BUCKET}/temp --region ${REGION} --save_main_session'
+    - 'pip install -r requirements.txt && python pipeline.py --input gs://${_BUCKET}/data.csv --output gs://${_BUCKET}/output --runner DataflowRunner --project ${_PROJECT} --staging_location gs://${_BUCKET}/staging --temp_location gs://${_BUCKET}/temp --region ${_REGION} --save_main_session'
   waitFor: ['Terraform init']

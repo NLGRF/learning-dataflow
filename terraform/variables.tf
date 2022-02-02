@@ -1,6 +1,5 @@
 variable "project_id" {
   type = string
-  default = "createder-1535612021236"
 }
 
 variable "region" {
@@ -10,6 +9,5 @@ variable "region" {
 
 variable "bucket" {
   type = string
-  default = "ntest-pipeline"
 }
 

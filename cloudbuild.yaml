@@ -13,7 +13,7 @@ steps:
   waitFor: ['-']
 
 - id: "Build dataflow template"
-  name: python:3.8
+  name: python
   dir: 'dataflow'
   env:
     - "PROJECT=${_PROJECT_ID}"

@@ -13,17 +13,14 @@ steps:
   waitFor: ['-']
 
 - id: "Build dataflow template"
-  name: python:3.8
+  name: 'python:3.8'
   dir: 'dataflow'
   env:
     - "PROJECT=${_PROJECT_ID}"
     - "BUCKET=${_BUCKET}"
     - "REGION=${_REGION}"
-  entrypoint: 'bash'
+  entrypoint: /bin/sh
   args:
     - '-c'
-    - |
-      pip install -r requirements.txt
-      chmod +x build.sh
-      ./build.sh
+    - 'pip install -r requirements.txt && python pipeline.py --input gs://${BUCKET}/data.csv --output gs://${BUCKET}/output --runner DataflowRunner --project ${PROJECT} --staging_location gs://${BUCKET}/staging --temp_location gs://${BUCKET}/temp --region ${REGION} --save_main_session'
   waitFor: ['Terraform init']

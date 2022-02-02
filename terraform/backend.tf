@@ -1,6 +1,6 @@
 terraform {
     backend "gcs" {
-        bucket  = "ntest-pipeline"
+        bucket  = "${BUCKET}"
         prefix  = "terraform/state"
     }
 }

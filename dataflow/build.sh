@@ -6,4 +6,5 @@ python pipeline.py \
 --staging_location gs://${BUCKET}/staging \
 --temp_location gs://${BUCKET}/temp \
 --region ${REGION} \
+--templateLocation=gs://${BUCKET}/templates/dataflow-demo-template \
 --save_main_session

@@ -1,5 +1,5 @@
 python pipeline.py \
---input gs://${BUCKET}/data.csv \
+--input data.csv \
 --output gs://${BUCKET}/output \
 --runner DataflowRunner \
 --project ${PROJECT} \

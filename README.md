@@ -19,3 +19,14 @@ gcloud projects add-iam-policy-binding createder-1535612021236 \
     --role="roles/cloudscheduler.admin"
 
 python pipeline.py --input gs://my-bb-bucket/data.csv --output gs://my-bb-bucket/output --runner DataflowRunner --project createder-1535612021236 --staging_location gs://my-bb-bucket/staging --temp_location gs://my-bb-bucket/temp --region asia-southeast1 --template_location gs://my-bb-bucket/templates/dataflow-demo-template
+
+python pipeline.py \
+--input data.csv \
+--output gs://${BUCKET}/output \
+--runner DataflowRunner \
+--project ${PROJECT} \
+--staging_location gs://${BUCKET}/staging \
+--temp_location gs://${BUCKET}/temp \
+--region ${REGION} \
+--template_location gs://${BUCKET}/templates/dataflow-demo-template \
+--save_main_session

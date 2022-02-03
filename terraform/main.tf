@@ -9,14 +9,15 @@ resource "google_cloud_scheduler_job" "scheduler" {
   schedule = "0 12 * * *"
   project = var.project_id
   region = var.region
-  bucket = var.bucket
+  # bucket = var.bucket
   # project = "createder-1535612021236"
   # region = "asia-southeast1"
   # bucket = "bbtest-pipeline"
 
   http_target {
     http_method = "POST"
-    uri = "https://dataflow.googleapis.com/v1b3/projects/${var.project_id}/locations/${var.region}/templates:launch?gcsPath=gs://${var.bucket}/templates/dataflow-demo-template"
+    # uri = "https://dataflow.googleapis.com/v1b3/projects/${var.project_id}/locations/${var.region}/templates:launch?gcsPath=gs://${var.bucket}/templates/dataflow-demo-template"
+    uri = "https://dataflow.googleapis.com/v1b3/projects/${var.project_id}/locations/${var.region}/templates:launch?gcsPath=gs://bbtest-pipeline/templates/dataflow-demo-template"
     oauth_token {
       service_account_email = google_service_account.cloud-scheduler-demo.email
     }

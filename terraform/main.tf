@@ -6,13 +6,14 @@ provider "google" {
 data "google_project" "project" {}
 resource "google_cloud_scheduler_job" "scheduler" {
   name = "scheduler-demo"
-  schedule = "0 12 * * *"
+  schedule = "0 0 * * *"
+  # This needs to be us-central1 even if the app engine is in us-central.
+  # You will get a resource not found error if just using us-central.
   region = var.region
-  time_zone = "Thailand/Indochina"
+
   http_target {
     http_method = "POST"
-    # uri = "https://dataflow.googleapis.com/v1b3/projects/${var.project_id}/locations/${var.region}/templates:launch?gcsPath=gs://${var.bucket}/templates/dataflow-demo-template"
-    uri = "https://dataflow.googleapis.com/v1b3/projects/${var.project_id}/locations/${var.region}/templates:launch?gcsPath=gs://bbtest-pipeline/templates/dataflow-demo-template"
+    uri = "https://dataflow.googleapis.com/v1b3/projects/${var.project_id}/locations/${var.region}/templates:launch?gcsPath=gs://${var.bucket}/templates/dataflow-demo-template"
     oauth_token {
       service_account_email = google_service_account.cloud-scheduler-demo.email
     }

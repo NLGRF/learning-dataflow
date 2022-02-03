@@ -7,9 +7,8 @@ data "google_project" "project" {}
 resource "google_cloud_scheduler_job" "scheduler" {
   name = "scheduler-demo"
   schedule = "0 12 * * *"
-  project = var.project_id
   region = var.region
-  # time_zone = "Thailand/New_York"
+  time_zone = "Thailand/Indochina"
   http_target {
     http_method = "POST"
     # uri = "https://dataflow.googleapis.com/v1b3/projects/${var.project_id}/locations/${var.region}/templates:launch?gcsPath=gs://${var.bucket}/templates/dataflow-demo-template"

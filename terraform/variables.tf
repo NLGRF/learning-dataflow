@@ -10,6 +10,6 @@ variable "region" {
 
 variable "bucket" {
   type = string
-  default = "bbtest-pipeline"
+  default = "my-bb-bucket"
 }
 

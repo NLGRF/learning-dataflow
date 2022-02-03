@@ -17,3 +17,5 @@ gcloud projects add-iam-policy-binding createder-1535612021236 \
 gcloud projects add-iam-policy-binding createder-1535612021236 \
     --member="serviceAccount:scheduler-dataflow-demo@createder-1535612021236.iam.gserviceaccount.com" \
     --role="roles/cloudscheduler.admin"
+
+python pipeline.py --input gs://my-bb-bucket/data.csv --output gs://my-bb-bucket/output --runner DataflowRunner --project createder-1535612021236 --staging_location gs://my-bb-bucket/staging --temp_location gs://my-bb-bucket/temp --region asia-southeast1 --template_location gs://my-bb-bucket/templates/dataflow-demo-template

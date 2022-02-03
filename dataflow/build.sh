@@ -1,3 +1,5 @@
+#!/bin/sh
+
 python pipeline.py \
 --input data.csv \
 --output gs://${BUCKET}/output \

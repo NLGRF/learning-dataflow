@@ -21,7 +21,7 @@ gcloud projects add-iam-policy-binding createder-1535612021236 \
 python pipeline.py --input gs://my-bb-bucket/data.csv --output gs://my-bb-bucket/output --runner DataflowRunner --project createder-1535612021236 --staging_location gs://my-bb-bucket/staging --temp_location gs://my-bb-bucket/temp --region asia-southeast1 --template_location gs://my-bb-bucket/templates/dataflow-demo-template
 
 python pipeline.py \
---input data.csv \
+--input gs://${BUCKET}/data.csv \
 --output gs://${BUCKET}/output \
 --runner DataflowRunner \
 --project ${PROJECT} \

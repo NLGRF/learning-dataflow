@@ -6,4 +6,5 @@ python batch.py \
 --temp_location gs://ntest-pipeline/temp \
 --staging_location gs://ntest-pipeline/staging \
 --template_location gs://ntest-pipeline/templates/dataflow-demo-template \
---region asia-southeast1
+--region asia-southeast1 \
+--job_name drinkbeer

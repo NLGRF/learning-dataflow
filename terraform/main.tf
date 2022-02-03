@@ -6,8 +6,13 @@ provider "google" {
 data "google_project" "project" {}
 resource "google_cloud_scheduler_job" "scheduler" {
   name = "scheduler-demo"
-  schedule = "0 18 * * *"
+  schedule = "0 12 * * *"
+  project = var.project_id
   region = var.region
+  bucket = var.bucket
+  # project = "createder-1535612021236"
+  # region = "asia-southeast1"
+  # bucket = "bbtest-pipeline"
 
   http_target {
     http_method = "POST"
